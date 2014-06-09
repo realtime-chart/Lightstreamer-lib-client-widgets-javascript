@@ -262,7 +262,7 @@ define(["LoggerManager","Setter","Inheritance","./Cell","IllegalArgumentExceptio
        * @param {String} [labelsClass] the name of an existing stylesheet, to be
        * applied to the Y axis label HTML elements. The parameter is optional;
        * if missing or null, then no specific stylesheet is applied.
-       * @param {Function} [labelsFormatter] a Function instance
+       * @param {LabelsFormatter} [labelsFormatter] a Function instance
        * used to format the Y axis values designated for the labels. 
        * <BR>The function will be invoked with a Number argument and should return a String.
        * If the function is not supplied, then the value will be used with no further formatting.

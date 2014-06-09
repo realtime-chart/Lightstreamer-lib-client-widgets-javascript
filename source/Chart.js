@@ -651,10 +651,8 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
        * affects the new points while all the previously plotted points are cleaned.</p>
        * 
        * @param {String} field A field name representing the X axis.
-       * @param {Function} [xParser] A parser function that can be used to normalize
+       * @param {CustomParserFunction} [xParser] A parser function that can be used to normalize
        * the value of the X field before using it to plot the chart.
-       * <BR>The function will be invoked with two String arguments, corresponding with
-       * the field value and the associated key, and should return a Number or null.
        * If the function is not supplied,
        * then the field values should represent valid numbers in JavaScript or be null.
        */
@@ -690,10 +688,9 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
        *
        * @param {String} field A field name representing the Y axis. An array
        * of field names can also be passed. Each field will generate its own line.
-       * @param {Function} [yParser] A parser function that can be used to normalize
+       * @param {(CustomParserFunction|CustomParserFunction[])} [yParser] A parser function that can be used to normalize
        * the value of the Y field before using it to plot the chart.
-       * <BR>The function will be invoked with two String arguments, corresponding with
-       * the field value and the associated key, and should return a Number or null. If the function 
+       * If the function 
        * is not supplied, then the field values should represent valid numbers in JavaScript or be null.
        * <BR>If an array has been specified for the field parameter, then an array of parser functions can 
        * also be passed. Each parser will be executed on the field having the same index
@@ -749,15 +746,6 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
        *
        * @param {String} field A field name representing the Y axis. An array
        * of field names can also be passed. Each field will generate its own line.
-       * @param {Function} [yParser] A parser function that can be used to normalize
-       * the value of the Y field before using it to plot the chart.
-       * <BR>The function will be invoked with a String argument, corresponding with
-       * a field value, and should return a Number. If the function is not supplied,
-       * then the field values should represent valid numbers in JavaScript.
-       * <BR>If an array has been specified for the field parameter, then an array of parser functions can 
-       * also be passed. Each parser will be executed on the field having the same index
-       * in the array. On the other hand, if an array of fields is passed but only one 
-       * parser has been specified, then the parser will be applied to all of the fields.
        * 
        * @see Chart#removeYAxis
        */
@@ -785,7 +773,6 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
         }
         
       },
-      
       
       /**
        * Operation method that sets or changes the limits for the visible part
@@ -851,9 +838,8 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
        * @param {String} [labelsClass] the name of an existing stylesheet, to be
        * applied to the X axis label HTML elements. The parameter is optional;
        * if missing or null, then no specific stylesheet will be applied.
-       * @param {Function} [labelsFormatter] a Function instance
+       * @param {LabelsFormatter} [labelsFormatter] a Function instance
        * used to format the X axis values designated for the labels. 
-       * <BR>The function will be invoked with a Number argument and should return a String.
        * If the function is not supplied, then the value will be used with no further formatting.
        * 
        */
@@ -913,6 +899,22 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
       getListeners: function() {
         return this._callSuperMethod(Chart,"getListeners");
       }
+      
+      /**
+       * Callback for {@link Chart#setXAxis} and {@link Chart#addYAxis}
+       * @callback CustomParserFunction
+       * @param {String} fieldValue the field value to be parsed.
+       * @param {String} key the key associated with the given value
+       * @return {Number} a valid number to be plotted or null if the value has to be considered unchanged
+       */
+      
+      /**
+       * Callback for {@link Chart#setXLabels} and {@link ChartLine#setYLabels}
+       * @callback LabelsFormatter
+       * @param {Number} value the value to be formatted before being print in a label. 
+       * @return {String} the String to be set as content for the label.
+       */
+      
       
   };
   
