@@ -259,10 +259,10 @@ define(["LoggerManager","Setter","Inheritance","./Cell","IllegalArgumentExceptio
        *
        * @param {Number} labelsNum the number of labels to be spread on the
        * Y axis; it should be 1 or greater.
-       * @param {String} labelsClass <b>[optional]</b> the name of an existing stylesheet, to be
+       * @param {String} [labelsClass] the name of an existing stylesheet, to be
        * applied to the Y axis label HTML elements. The parameter is optional;
        * if missing or null, then no specific stylesheet is applied.
-       * @param {Function} labelsFormatter <b>[optional]</b> a Function instance
+       * @param {Function} [labelsFormatter] a Function instance
        * used to format the Y axis values designated for the labels. 
        * <BR>The function will be invoked with a Number argument and should return a String.
        * If the function is not supplied, then the value will be used with no further formatting.
@@ -291,15 +291,15 @@ define(["LoggerManager","Setter","Inheritance","./Cell","IllegalArgumentExceptio
        * @throws {IllegalArgumentException} if pointSize or lineSize are not
        * valid positive integer numbers.
        *
-       * @param {String} pointColor <b>[optional]</b> the color use to draw the points on the chart.
+       * @param {String} [pointColor=black]the color use to draw the points on the chart.
        * A point is drawn per each new value in the model. Any valid CSS color can
        * be used. By default "black" is used.
-       * @param {String} lineColor <b>[optional]</b> the color use to draw the lines on the chart.
+       * @param {String} [lineColor=black] the color use to draw the lines on the chart.
        * A line is to connect two consecutive points for the same line. 
        * Any valid CSS color can be used. By default "black" is used.
-       * @param {Number} pointSize <b>[optional]</b> the size in pixel of the drawn points.
+       * @param {Number} [pointSize=1] the size in pixel of the drawn points.
        * By default 1 is used.
-       * @param {Number} lineSize <b>[optional]</b> the size in pixel of the drawn lines.
+       * @param {Number} [lineSize=1] the size in pixel of the drawn lines.
        * By default 1 is used.
        */
       setStyle: function(pointColor,lineColor,pointSize,lineSize) {

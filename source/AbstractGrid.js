@@ -312,13 +312,13 @@ define(["Inheritance","./CellMatrix","Executor","./Cell","Helpers",
        * 
        * @param {String} sortField The name of the field to be used as sort field, 
        * or null to disable sorting.
-       * @param {boolean} descendingSort <b>[optional]</b> true or false to perform descending or
+       * @param {boolean} [descendingSort=false] true or false to perform descending or
        * ascending sort. This parameter is optional; if missing or null,
        * then ascending sort is performed.
-       * @param {boolean} numericSort <b>[optional]</b> true or false to perform numeric or
+       * @param {boolean} [numericSort=false] true or false to perform numeric or
        * alphabetical sort. This parameter is optional; if missing or null, then
        * alphabetical sort is performed.
-       * @param {boolean} commaAsDecimalSeparator <b>[optional]</b> true to specify that sort
+       * @param {boolean} [commaAsDecimalSeparator=false] true to specify that sort
        * field values are decimal numbers in which the decimal separator is
        * a comma; false to specify it is a dot. This setting is used only if
        * numericSort is true, in which case it is optional, with false as its

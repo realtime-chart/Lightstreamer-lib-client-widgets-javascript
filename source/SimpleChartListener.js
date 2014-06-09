@@ -25,10 +25,10 @@ define(["List"],function(List) {
    * directly on instances of this class.
    * @constructor
    * 
-   * @param {Number} xSpan <b>[optional]</b> The size of the X axis. The units of the value depends on
+   * @param {Number} [xSpan=60] The size of the X axis. The units of the value depends on
    * the model of the {@link Chart} instance and possibly on the parser configured on
    * the {@link Chart#setXAxis} method. If not specified, then 60 will be used.
-   * @param {Number} yPerc <b>[optional]</b> A percentage that is used for the first positioning of the
+   * @param {Number} [yPerc=20] A percentage that is used for the first positioning of the
    * Y axis: the Y axis will have as initial maximum position a value that is yPerc% 
    * greater than the first Y position and as initial minimum position a value that
    * is yPerc% smaller than it. If not specified, then 20 (meaning 20%) will be used. 

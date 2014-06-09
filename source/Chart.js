@@ -564,26 +564,26 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
        * @throws {IllegalArgumentException} if one of the numeric values is not 
        * valid.
        *
-       * @param {String} chartCss <b>[optional]</b> the name of an existing stylesheet to be applied to 
+       * @param {String} [chartCss] the name of an existing stylesheet to be applied to 
        * the chart. If not set, the stylesheet is inherited from
        * the DOM element containing the chart.
        * 
-       * @param {Number} chartHeight <b>[optional]</b> the height in pixels of the chart area.
+       * @param {Number} [chartHeight] the height in pixels of the chart area.
        * Such height may be set as smaller than the height of the container
        * HTML element in order to make room for the X axis labels. If not set, 
        * the whole height of the container HTML element is used.
        * 
-       * @param {Number} chartWidth <b>[optional]</b> the width in pixels of the chart area.
+       * @param {Number} [chartWidth] the width in pixels of the chart area.
        * Such width may be set as smaller than the width of the container HTML 
        * element in order to make room for the Y axis labels. If not set, 
        * the whole width of the container HTML element is used.
        * 
-       * @param {Number} chartTop <b>[optional]</b> the distance in pixels between the top margin of the 
+       * @param {Number} [chartTop=0] the distance in pixels between the top margin of the 
        * chart area and the top margin of the container HTML element. 
        * Such distance may be set as a nonzero value in order to make room for
        * the first Y axis label. If not set, 0 is used.
        * 
-       * @param {Number} chartLeft <b>[optional]</b> the distance in pixels between the left margin of 
+       * @param {Number} [chartLeft=0] the distance in pixels between the left margin of 
        * the chart area and the left margin of the container HTML element. 
        * Such distance may be set as a nonzero value in order to make room for the 
        * Y axis labels. If not set, 0 is used.
@@ -651,7 +651,7 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
        * affects the new points while all the previously plotted points are cleaned.</p>
        * 
        * @param {String} field A field name representing the X axis.
-       * @param {Function} xParser <b>[optional]</b> A parser function that can be used to normalize
+       * @param {Function} [xParser] A parser function that can be used to normalize
        * the value of the X field before using it to plot the chart.
        * <BR>The function will be invoked with two String arguments, corresponding with
        * the field value and the associated key, and should return a Number or null.
@@ -690,7 +690,7 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
        *
        * @param {String} field A field name representing the Y axis. An array
        * of field names can also be passed. Each field will generate its own line.
-       * @param {Function} yParser <b>[optional]</b> A parser function that can be used to normalize
+       * @param {Function} [yParser] A parser function that can be used to normalize
        * the value of the Y field before using it to plot the chart.
        * <BR>The function will be invoked with two String arguments, corresponding with
        * the field value and the associated key, and should return a Number or null. If the function 
@@ -749,7 +749,7 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
        *
        * @param {String} field A field name representing the Y axis. An array
        * of field names can also be passed. Each field will generate its own line.
-       * @param {Function} yParser <b>[optional]</b> A parser function that can be used to normalize
+       * @param {Function} [yParser] A parser function that can be used to normalize
        * the value of the Y field before using it to plot the chart.
        * <BR>The function will be invoked with a String argument, corresponding with
        * a field value, and should return a Number. If the function is not supplied,
@@ -848,10 +848,10 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
        *
        * @param {Number} labelsNum the number of labels to be spread on the
        * X axis; it should be 1 or greater.
-       * @param {String} labelsClass <b>[optional]</b> the name of an existing stylesheet, to be
+       * @param {String} [labelsClass] the name of an existing stylesheet, to be
        * applied to the X axis label HTML elements. The parameter is optional;
        * if missing or null, then no specific stylesheet will be applied.
-       * @param {Function} labelsFormatter <b>[optional]</b> a Function instance
+       * @param {Function} [labelsFormatter] a Function instance
        * used to format the X axis values designated for the labels. 
        * <BR>The function will be invoked with a Number argument and should return a String.
        * If the function is not supplied, then the value will be used with no further formatting.

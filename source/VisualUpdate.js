@@ -369,7 +369,7 @@ define(["LoggerManager","Inheritance","Setter","IllegalArgumentException"],
      * @param {String} attrName the name of an HTML stylesheet attribute.
      * The DOM attribute name should be used, not the CSS name (e.g.
      * "backgroundColor" is accepted, while "background-color" is not).
-     * @param {String} replicaId <b>[optional]</b> A custom identifier that can be used in case two
+     * @param {String} [replicaId] A custom identifier that can be used in case two
      * or more cells were defined for the same field (the "data-replica" attribute).
      * If more cells were defined but this parameter is not specified, then a random
      * cell will be selected.
@@ -401,7 +401,7 @@ define(["LoggerManager","Inheritance","Setter","IllegalArgumentException"],
      * or null if the cell style should not change while exiting "hot" phase
      * (regardless of the settings made through {@link #setStyle} and
      * {@link #setAttribute}).
-     * @param {String} replicaId <b>[optional]</b> A custom identifier that can be used in case two
+     * @param {String} [replicaId] A custom identifier that can be used in case two
      * or more cells were defined for the same field (the "data-replica" attribute).
      * If more cells were defined but this parameter is not specified, then a random
      * cell will be selected.
