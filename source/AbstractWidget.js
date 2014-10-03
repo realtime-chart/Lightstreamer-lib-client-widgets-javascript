@@ -618,16 +618,13 @@ define(["Inheritance","Matrix","LoggerManager","Setter","EventDispatcher",
         
         gridsLogger.logInfo("Cleaning the model",this);
         
-        var m = this.values.getEntireMatrix();
-        var i;
         var keys = [];
-        for (i in m) {
-          keys.push(i);
-        }
-        for (i=0; i<keys.length; i++) {
+        this.values.forEachRow(function(row) {
+          keys.push(row);
+        });
+        for (var i=0; i<keys.length; i++) {
           this.removeRow(keys[i]);
         }
-        
       },
       
       /**
