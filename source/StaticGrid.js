@@ -344,8 +344,7 @@ define(["Inheritance","./AbstractGrid","./VisualUpdate","./Cell","./SlidingCell"
           
         }
         
-        mtx = this.grid.getEntireMatrix();
-        for (var i in mtx) {
+        if (!this.grid.isEmpty()) {
           //at least one cell, that's ok for us
           return;
         }
@@ -373,11 +372,10 @@ define(["Inheritance","./AbstractGrid","./VisualUpdate","./Cell","./SlidingCell"
        * @ignore
        */
       computeItemSymbolsSet: function() {
-        var cells = this.grid.getEntireMatrix();
         var itemSymbolsSet = {};
-        for (var itemSymbol in cells) {
+        this.grid.forEachRow(function(itemSymbol){
           itemSymbolsSet[itemSymbol] = true;
-        }
+        });
         return itemSymbolsSet;
       },
       
