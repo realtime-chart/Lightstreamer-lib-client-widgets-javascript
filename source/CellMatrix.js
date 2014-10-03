@@ -201,18 +201,17 @@ define(["Matrix","Inheritance","./Cell"],
       },
       
       forEachCell: function(cb) {
-        var matrix = this.getEntireMatrix();
-        for (var i in matrix) {
-          this.forEachCellInRow(i,cb);
-        }
+        var that = this;
+        this.forEachElement(function(el,row,col) {
+          that.forEachCellInElement(el,row,col,cb);
+        });
       },
       
       forEachCellInRow: function(_row,cb) {
-        var cellRow = this.getRow(_row);
-        
-        for (var i in cellRow) {
-          this.forEachCellInPosition(_row,i,cb);
-        }
+        var that = this;
+        this.forEachElementInRow(_row,function(el,row,col) {
+          that.forEachCellInElement(el,row,col,cb);
+        });
       },
       
       forEachCellInPosition: function(_row,_col,cb) {
@@ -220,10 +219,14 @@ define(["Matrix","Inheritance","./Cell"],
         if (!_cell) {
           return;
         }
-        if (_cell.isCell) {
-          cb(_cell,_row,_col);
-        } else for(var i=0; i<_cell.length; i++) {
-          cb(_cell[i],_row,_col,_cell[i].getNum());
+        this.forEachCellInElement(_cell,_row,_col,cb);
+      },
+      
+      /*private*/ forEachCellInElement: function(cell,row,col,cb) {
+        if (cell.isCell) {
+          cb(cell,row,col);
+        } else for(var i=0; i<cell.length; i++) {
+          cb(cell[i],row,col,cell[i].getNum());
         }
       },
       
@@ -261,6 +264,7 @@ define(["Matrix","Inheritance","./Cell"],
   
   
   Inheritance(CellMatrix,Matrix,false,true);
+  
   return CellMatrix;
   
 });
