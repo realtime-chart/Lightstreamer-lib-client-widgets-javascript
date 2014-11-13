@@ -724,30 +724,19 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
       },
       
       /**
-       * Adds field(s) to be used as the source of the Y-coordinate for each update
-       * An optional parser can be passed to normalize the value before it is used to 
-       * plot the chart.
-       * The resulting values should be in the limits posed by the 
-       * {@link ChartLine#positionYAxis} related to the involved line, otherwise a 
-       * {@link ChartListener#onYOverflow} event is fired to handle the situation.
+       * Removes field(s) currently used as the source of the Y-coordinate for each update
+       * and all the related {@link ChartLine}. 
        * <BR>It is possible to specify an array of fields instead of specifying a 
-       * single field. If that's the case multiple chart lines will be generated
-       * per each row in the model.
-       * <BR>Note that for each field in the underlying model it is possible to associate
-       * only one line. If multiple lines based on the same fields are needed, dedicated
-       * fields should be added to the model, through {@link AbstractWidget#updateRow}.
-       * In case this instance is used to listen to events from {@link Subscription}
-       * instance(s), updateRow() can be invoked from within {@link SubscriptionListener#onItemUpdate}.
+       * single field. If that's the case all the specified fields and related chart lines 
+       * will be removed.
        *
        * <p class="lifecycle"><b>Lifecycle:</b> The method can be invoked at any time, in order to
-       * add fields to be plotted or in order to change the parser associated to
-       * fields already being plotted.
-       * Until invoked for the first time, no chart will be printed.</p>
+       * remove plotted fields.</p>
        *
        * @param {String} field A field name representing the Y axis. An array
-       * of field names can also be passed. Each field will generate its own line.
+       * of field names can also be passed. 
        * 
-       * @see Chart#removeYAxis
+       * @see Chart#addYAxis
        */
       removeYAxis: function(field) {
         if (Helpers.isArray(field)) {
