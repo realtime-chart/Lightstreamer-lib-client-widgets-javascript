@@ -214,7 +214,7 @@ define(["Environment","IllegalArgumentException","Helpers","./LightstreamerConst
       backgroundColor: "#dddddd",
       opacity: "0.85",
       filter: "alpha(opacity"+"=85)",
-      "boxShadow": "1px 1px 5px #999999"
+      "boxShadow": "#999 1px 3px 7px"
     });
     
     if (attachToBorder == "no") {
@@ -281,9 +281,10 @@ define(["Environment","IllegalArgumentException","Helpers","./LightstreamerConst
       fontSize: "10px",
       color: "#333333",
       fontWeight: "bolder",
-      textShadow: "2px 2px 3px white, -2px 2px 3px white, 2px -2px 3px white, -2px -2px 3px white",
+      textShadow: "white 1px 1px 1px",
       verticalAlign: "middle",
-      padding:"0"
+      padding:"0",
+      lineHeight: "13px"
     });
     firstTd.innerHTML = INDICATOR_LABEL;
     
@@ -299,7 +300,8 @@ define(["Environment","IllegalArgumentException","Helpers","./LightstreamerConst
       color: "#333333",
       textShadow: "1px 1px 1px white",
       verticalAlign: "middle",
-      padding:"0"
+      padding:"0",
+      lineHeight: "13px"
     });
     
     ////////table
