@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
-define(["./Cell"],function(Cell) {
+define(["./Cell","ASSERT"],function(Cell,ASSERT) {
   /**
    * @private 
    */
@@ -94,6 +94,11 @@ define(["./Cell"],function(Cell) {
         if (!this.lines[id]) {
           this.addLine(chartLine);
         }
+        
+//>>excludeStart("debugExclude", pragmas.debugExclude);             
+        ASSERT.verifyOk(xval>=0);
+        ASSERT.verifyOk(yval>=0);
+//>>excludeEnd("debugExclude");        
 
         this.lines[id].drawTo(xval,yval);
       }
