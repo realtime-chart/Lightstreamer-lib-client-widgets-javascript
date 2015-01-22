@@ -388,7 +388,8 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
        * @private
        */
       parseValue: function(key,update,field,parser) {
-        var val = update[field] === null ? null : update[field] || this.values.get(key,field);
+        var val = update[field] === null || typeof(update[field]) == "undefined" ? this.values.get(key,field) : update[field];
+
         val = parser ? parser(val,key) : val;
         return val === null ? null : Helpers.getNumber(val);
       },
@@ -419,12 +420,16 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
         
         //fix X
         var newPosX = this.parseValue(key,serverValues,this.xFieldCode,this.xParser);
+        if (newPosX === null) {
+          //no old, no new, exit
+          return;
+        }
         
         if (isNaN(newPosX) || (newPosX !== null && newPosX < this.xMin)) {
           return;
         }
         //notify X overflows
-        if (newPosX > this.xMax) { //xMax can't be negative, null is never > xMax
+        if (newPosX > this.xMax) { 
           this.dispatchEvent("onXOverflow", [key, newPosX, this.xMin, this.xMax]);
         }
         
@@ -782,10 +787,12 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
        * @param {Number} max higher limit for the visible part of the X axis.
        */
       positionXAxis: function(min, max) {
-        this.xMax = this.checkPositiveNumber(max, true, true);
-        this.xMin = this.checkPositiveNumber(min, true, true);
+        this.xMax = Number(max);
+        this.xMin = Number(min);
         
-        if (this.xMin > this.xMax) {
+        if (isNaN(this.xMax) || isNaN(this.xMin)) {
+          throw new IllegalArgumentException("Min and max must be numbers");
+        } else if (this.xMin > this.xMax) {
           throw new IllegalArgumentException("The maximum value must be greater than the minimum value");
         }
     
