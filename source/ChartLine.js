@@ -327,10 +327,13 @@ define(["LoggerManager","Setter","Inheritance","./Cell","IllegalArgumentExceptio
        * @param {Number} max higher limit for the visible part of the Y axis.
        */
       positionYAxis: function(min, max) {
-        this.yMax = this.checkPositiveNumber(max, true, true);
-        this.yMin = this.checkPositiveNumber(min, true, true);
+        this.yMax = Number(max);
+        this.yMin = Number(min);
 
-        if (this.yMin > this.yMax) {
+        
+        if (isNaN(this.yMax) || isNaN(this.yMin)) {
+          throw new IllegalArgumentException("Min and max must be numbers");
+        } if (this.yMin > this.yMax) {
           throw new IllegalArgumentException("The maximum value must be greater than the minimum value");
         }
         
