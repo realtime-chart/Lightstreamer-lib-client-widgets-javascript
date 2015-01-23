@@ -37,6 +37,11 @@ define([weswitClassPrefix+"CellMatrix",weswitClassPrefix+"Cell","./HtmlTest","we
     start:function() {
       this._callSuperMethod(CellMatrixTest,"start");
       
+      if (!CellMatrix.prototype.forEachCell) {
+        //currently can't work on the minified version
+        this.end();
+        return;
+      }
       
       this.write('<div id="c11"  data-row="r1" data-field="f1" data-source="Lightstreamer">c11 </div>');
       this.write('<div id="c12"  data-row="r1" data-field="f2" data-source="Lightstreamer">c12 </div>');
@@ -45,13 +50,6 @@ define([weswitClassPrefix+"CellMatrix",weswitClassPrefix+"Cell","./HtmlTest","we
       this.write('<div id="c22b" data-row="r2" data-field="f2" data-source="Lightstreamer">c22b</div>');
       this.write('<div id="c31"  data-row="r3" data-field="f1" data-source="Lightstreamer">c31 </div>');
       this.write('<div id="c32"  data-row="r3" data-field="f2" data-source="Lightstreamer">c32 </div>');
-      
-
-      if (!CellMatrix.prototype.forEachCell) {
-        //currently can't work on the minified version
-        this.end();
-        return;
-      }
       
       //we're going to run a partial test
       

@@ -135,6 +135,8 @@ define([weswitClassPrefix+"Cell","./HtmlTest","weswit/Inheritance","weswit/ASSER
           
       testLogger.debug("TEST COMPLETE");
       
+      //reset this
+      Cell.useOldNames = null;
       this.end();
     }
   };
