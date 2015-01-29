@@ -373,10 +373,10 @@ define(["Inheritance","./AbstractGrid","./Cell","./VisibleParent","./InvisiblePa
       var refererNode = null;
       for (i = 0; i < ancestorBrothers.length; i++) {
         // Sia nel caso upwardScroll che al contrario
-        // il brother da segnarsi è lo stesso, ovvero
+        // il brother da segnarsi Ã¨ lo stesso, ovvero
         // il fratello subito successivo all'ancestor
-        // in tal modo il primo inserito "sostituirà" l'ancestor
-        //(viene inserito tra l'ancestor e tale fratello, data l'invisibilità
+        // in tal modo il primo inserito "sostituirÃ " l'ancestor
+        //(viene inserito tra l'ancestor e tale fratello, data l'invisibilitÃ 
         //dell'ancestor, sembra una sostituzione)
         if (ancestorBrothers[i] == ancestorNode) {
           if (ancestorBrothers[i+1]) {
@@ -450,7 +450,7 @@ define(["Inheritance","./AbstractGrid","./Cell","./VisibleParent","./InvisiblePa
       // di autoscroll su un elemento html
       if (this.autoScrollType == ELEMENT) {
         if (this.autoScrollElement && this.autoScrollElement.appendChild) {
-          //il template è già stato letto
+          //il template Ã¨ giÃ  stato letto
           //altrimenti "autoScrollElement" sarebbe una stringa e non
           //avrebbe il metodo appendChild
         } else {
@@ -497,12 +497,13 @@ define(["Inheritance","./AbstractGrid","./Cell","./VisibleParent","./InvisiblePa
     },
         
     /**
-     * @ignore
+     * @inheritdoc
      */
     clean: function() {
+    //why this useless implementation here? Is it because of closure? TODO verify
       this._callSuperMethod(DynaGrid,"clean");
     },
-    
+
     /**
      * @private
      */
@@ -866,7 +867,7 @@ define(["Inheritance","./AbstractGrid","./Cell","./VisibleParent","./InvisiblePa
       while (up < down) {
         j = Math.floor((up + down) /2);
         var thisKey = null;
-        //qui c'era un while dai tempi del WC3. Ma perchè?? [WC4 e WC5 sono usciti senza quel while, direi che è ok ]
+
         if (j <= this.rowCount) {
           var compare = this.getNodeByIndex(j);
           if (compare == toUpdate) {
@@ -884,7 +885,7 @@ define(["Inheritance","./AbstractGrid","./Cell","./VisibleParent","./InvisiblePa
       }
 
       if (up == down) {
-        //up e down coincidono, il nostro posto è subito prima o subito dopo questo punto
+        //up e down coincidono, il nostro posto Ã¨ subito prima o subito dopo questo punto
         var compare = this.getNodeByIndex(up);
         var compareKey = this.makeSortValue(this.values.get(compare.getKey(),this.sortField));
         if (this.isBefore(newSortVal,compareKey)) {
