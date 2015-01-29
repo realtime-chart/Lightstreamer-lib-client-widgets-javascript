@@ -372,7 +372,7 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
       },
 
       /**
-       * @ignore
+       * @inheritdoc
        */
       onListenStart: function(sub) {
         this._callSuperMethod(Chart,"onListenStart",[sub]);
@@ -514,7 +514,7 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
       },
 
       /**
-       * @ignore
+       * @inheritdoc
        */
       clean: function() {
         this._callSuperMethod(Chart,"clean"); 
@@ -845,7 +845,7 @@ define(["./AbstractWidget","./Cell","LoggerManager","Inheritance","Helpers","Env
         this.labelsFormatter = labelsFormatter || null;
         
         if (this.xUnit != null) {
-          //l'asse X Ë gi‡ configurato, disegno le labels
+          //l'asse X √® gi√† configurato, disegno le labels
           this.paintXLabels();  //screenX & xMax (xUnit) - chartArea.parentNode
         }
       

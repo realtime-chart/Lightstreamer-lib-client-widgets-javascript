@@ -63,14 +63,14 @@ define(["List"],function(List) {
   
   SimpleChartListener.prototype = {
     /**
-     * @ignore
+     * @inheritdoc
      */
     onListenStart: function(chartTable) {
       this.chartTable = chartTable;
     },
     
     /**
-     * @ignore
+     * @inheritdoc
      */
     onYOverflow: function(key,toUpdateChartLine,lastY,minY,maxY) {
       var shift = (maxY - minY)/2;
@@ -95,7 +95,7 @@ define(["List"],function(List) {
     },
     
     /**
-     * @ignore
+     * @inheritdoc
      */
     onXOverflow: function(key, lastX, minX, maxX) {        
       if (lastX > maxX) {
@@ -107,7 +107,7 @@ define(["List"],function(List) {
     },
     
     /**
-     * @ignore
+     * @inheritdoc
      */
     onNewLine: function(key,newChartLine,nowX,nowY) {
       this.chartTable.positionXAxis(nowX,nowX+this.xSpan); 
@@ -125,7 +125,7 @@ define(["List"],function(List) {
     },
     
     /**
-     * @ignore
+     * @inheritdoc
      */
     onRemovedLine: function(key,removedChartLine) {
       this.handledLines.remove(removedChartLine);

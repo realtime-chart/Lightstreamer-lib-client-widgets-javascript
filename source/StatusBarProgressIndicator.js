@@ -64,7 +64,7 @@ define(["./LightstreamerConstants","Executor","Environment"],
   
   StatusBarProgressIndicator.prototype = {
       /**
-       * @ignore
+       * @inheritdoc
        */
       onStatusChange: function(status) {
         if (status) {
@@ -125,7 +125,7 @@ define(["./LightstreamerConstants","Executor","Environment"],
       },
       
       /**
-       * @ignore
+       * @inheritdoc
        */
       onListenStart: function(lsClient) {
         this.startRefreshing();
@@ -134,7 +134,7 @@ define(["./LightstreamerConstants","Executor","Environment"],
       },
       
       /**
-       * @ignore
+       * @inheritdoc
        */
       onListenEnd: function(lsClient) {
         this.stopRefreshing();

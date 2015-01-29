@@ -158,7 +158,7 @@ define(["Inheritance","Matrix","LoggerManager","Setter","EventDispatcher",
       },
       /**
        * From SubscriptionListener
-       * @ignore
+       * @inheritdoc
        */
       onItemUpdate: function(updateInfo) {
         var itemName = updateInfo.getItemName();
@@ -195,7 +195,7 @@ define(["Inheritance","Matrix","LoggerManager","Setter","EventDispatcher",
       
       /**
        * From SubscriptionListener
-       * @ignore
+       * @inheritdoc
        */
       onClearSnapshot: function(itemName, itemPos) {
         //get the associated row and remove them
@@ -233,7 +233,7 @@ define(["Inheritance","Matrix","LoggerManager","Setter","EventDispatcher",
       
       /**
        * From SubscriptionListener
-       * @ignore
+       * @inheritdoc
        */
       onSubscription: function() {
         if (this.activeSubscriptions == 0 && this.cleanOnFirstSubscribe) {
@@ -252,7 +252,7 @@ define(["Inheritance","Matrix","LoggerManager","Setter","EventDispatcher",
       
       /**
        * From SubscriptionListener
-       * @ignore
+       * @inheritdoc
        */
       onUnsubscription: function() {
         this.activeSubscriptions--;
@@ -264,7 +264,7 @@ define(["Inheritance","Matrix","LoggerManager","Setter","EventDispatcher",
       
       /**
        * From SubscriptionListener
-       * @ignore
+       * @inheritdoc
        */
       onListenStart: function(sub) {
         if (!this.masterSubscription) {
@@ -283,7 +283,7 @@ define(["Inheritance","Matrix","LoggerManager","Setter","EventDispatcher",
       
       /**
        * From SubscriptionListener
-       * @ignore
+       * @inheritdoc
        */
       onListenEnd: function(sub) {
         if (sub.isSubscribed()) {

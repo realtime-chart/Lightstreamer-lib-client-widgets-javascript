@@ -65,7 +65,7 @@ define(["Environment"], function(Environment) {
   
   StatusImageWidget.prototype = {
       /**
-       * @ignore
+       * @inheritdoc
        */
       onStatusChange: function(status) {
         if (this.messageContainer) {

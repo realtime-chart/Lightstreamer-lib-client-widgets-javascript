@@ -532,7 +532,7 @@ define(["Environment","IllegalArgumentException","Helpers","./LightstreamerConst
       },
       
       /**
-       * @ignore
+       * @inheritdoc
        */
       onListenStart: function(lsClient) {
         if(widgetDisabled) {
@@ -543,7 +543,7 @@ define(["Environment","IllegalArgumentException","Helpers","./LightstreamerConst
       },
 
       /**
-       * @ignore
+       * @inheritdoc
        */
       onListenEnd: function() {
         if(widgetDisabled) {
@@ -602,7 +602,7 @@ define(["Environment","IllegalArgumentException","Helpers","./LightstreamerConst
       },
       
       /**
-       * @ignore
+       * @inheritdoc
        */
       onStatusChange: function(status) {
         if (!this.ready || widgetDisabled) {

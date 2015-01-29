@@ -331,7 +331,7 @@ define(["Inheritance","./AbstractGrid","./Cell","./VisibleParent","./InvisiblePa
     
     /**
      * @protected
-     * @ignore
+     * @inheritdoc
      */
     parseHtml: function() {
       this.parsed = true;
