@@ -148,14 +148,26 @@ define(["./ColorConverter","Executor","Helpers","./Cell","Environment"],
             this.stopFader(fader.cell);
             continue;
           }
-          
+
           if (fader.endBack == "transparent") {
-           upEl.style.backgroundColor = "rgba("+
-            fader.startBack[0]+","+
-            fader.startBack[1]+","+
-            fader.startBack[2]+","+
-            this.easeInOut(100,0,fader.steps,fader.actStep)/100 +")";
-            
+            try {
+              upEl.style.backgroundColor = "rgba(" +
+              fader.startBack[0] + "," +
+              fader.startBack[1] + "," +
+              fader.startBack[2] + "," +
+              this.easeInOut(100, 0, fader.steps, fader.actStep) / 100 + ")";
+            } catch(e) {
+              var timeToEnd = (fader.steps-fader.actStep)*this.fadeInterval;
+              
+              Executor.addTimedTask(toTransparent(upEl),timeToEnd);
+
+              if (fader.endCommand) {
+                Executor.addPackedTimedTask(fader.endCommand,timeToEnd);
+              }
+              
+              this.stopFader(fader.cell);
+              continue;
+            }
           } else if (fader.endBack) {
             upEl.style.backgroundColor = "rgb("+
               this.easeInOut(fader.startBack[0],fader.endBack[0],fader.steps,fader.actStep) +","+
@@ -268,6 +280,12 @@ define(["./ColorConverter","Executor","Helpers","./Cell","Environment"],
     }
   
   };
+
+  function toTransparent(upEl) {
+    return function() {
+      upEl.style.backgroundColor = "transparent";
+    };
+  }
 
 
   /**
