@@ -94,11 +94,6 @@ define(["./Cell","ASSERT"],function(Cell,ASSERT) {
         if (!this.lines[id]) {
           this.addLine(chartLine);
         }
-        
-//>>excludeStart("debugExclude", pragmas.debugExclude);             
-        ASSERT.verifyOk(xval>=0);
-        ASSERT.verifyOk(yval>=0);
-//>>excludeEnd("debugExclude");        
 
         this.lines[id].drawTo(xval,yval);
       }
