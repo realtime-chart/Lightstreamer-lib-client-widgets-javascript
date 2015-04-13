@@ -200,7 +200,9 @@ define(["Inheritance","Matrix","LoggerManager","Setter","EventDispatcher",
       onClearSnapshot: function(itemName, itemPos) {
         //get the associated row and remove them
         var itemId = itemName == null ? itemPos : itemName;
-        var associatedRows = this.itemKeyMap.getRowAndDelete(itemId);
+
+        var associatedRows = this.itemKeyMap.getRow(itemId);
+        this.itemKeyMap.delRow(itemId);
         for (var key in associatedRows) {
           this.removeRow(key);
         } 
